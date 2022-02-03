@@ -37,7 +37,8 @@ class DataRecord:
 
 bili_url = 'https://api.bilibili.com/x/relation/stat?vmid=401315430'
 
-'''{'code': 0, 'message': '0', 'ttl': 1, 'data': {'mid': 401315430, 'following': 20, 'whisper': 0, 'black': 0, 
+'''{'code': 0, 'message': '0', 'ttl': 1,
+'data': {'mid': 401315430, 'following': 20, 'whisper': 0, 'black': 0, 
 'follower': 160679}} '''
 
 file_path = 'D:/BVideoFiles/22886883-星瞳_Official/record_fans_num.json'

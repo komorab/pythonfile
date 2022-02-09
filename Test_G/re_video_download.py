@@ -8,7 +8,6 @@ class DataRecord:
         self.url = url
         self.record = record
         self.filename = filename
-        self.follower = DataRecord.get_num(self)
         self.record_fin = DataRecord.fans_record_dict(self)
 
     def get_num(self):
@@ -24,7 +23,7 @@ class DataRecord:
         """record the number of fans as a dictionary"""
         record_fin = {}
         self.record = {}
-        self.record[time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())] = self.follower
+        self.record[time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())] = DataRecord.get_num(self)
         # 调用之后record不会清空
         for rec in self.record:
             record_fin[rec] = self.record[rec]

@@ -1,40 +1,53 @@
+# 用于记录数据的变化，不过现在的手段还是太粗糙了，尽量写一个class让main更少
+# 2022-2-11 如果把数据和dict加入self，每次调用self时不会刷新，不过勉强可以用了
+import sys
 import time
 import requests as r
 import json
 
 
 class DataRecord:
-    def __init__(self, url: str, filename: str, record={}):
-        self.url = url
-        self.record = record
-        self.filename = filename
-        self.record_fin = DataRecord.fans_record_dict(self)
+    def __init__(self, uid: int, filepath=sys.path[0], filename='FollowerRecord.json'):
+        self.uid = uid
+        self.url = 'https://api.bilibili.com/x/relation/stat?vmid=' + str(uid)
+        if filepath == sys.path[0]:
+            self.filepath = filepath + filename
+        else:
+            self.filepath = filepath
 
-    def get_num(self):
-        """get the number of uid or follower or following"""
+    def get_fans_num(self) -> int:
+        """从get到的json数据中获取follower数据"""
         response = r.get(self.url)
         if response.status_code == 200:
+            # 判断get状态是否正常
             responses_dict = response.json()
             response_dict = responses_dict['data']
             num = response_dict['follower']
             return num
 
-    def fans_record_dict(self):
-        """record the number of fans as a dictionary"""
-        record_fin = {}
-        self.record = {}
-        self.record[time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())] = DataRecord.get_num(self)
-        # 调用之后record不会清空
-        for rec in self.record:
-            record_fin[rec] = self.record[rec]
-        return record_fin
+    def record_dict(self, statue=1) -> dict:
+        """
+        将时间-数量转化为key-value形式并成为一个dict并入和返回整个数据dict
+        statue用于输出指定数据：
+            1：follower（好像没几个能够输出
+        """
+        record = {}
+        if statue == 1:
+            record.clear()
+            record[time.strftime("%Y-%m-%d %H:%M:%S", time.localtime())] = DataRecord.get_fans_num(self)
+        return record
 
     def write_num(self):
-        with open(self.filename, 'a+') as file:
-            json.dump(self.record_fin, file, indent=4)
+        """文件不存在时会报错，下次修复"""
+        with open(self.filepath, 'r') as read:
+            list_record = list(json.load(read))
+            list_record.append(DataRecord.record_dict(self))
+        with open(self.filepath, 'w') as file:
+            json.dump(list_record, file, indent=4)
 
 
 bili_url = 'https://api.bilibili.com/x/relation/stat?vmid=401315430'
+bili_uid = 401315430
 
 '''{'code': 0, 'message': '0', 'ttl': 1,
 'data': {'mid': 401315430, 'following': 20, 'whisper': 0, 'black': 0, 
@@ -45,7 +58,7 @@ file_path = 'D:/BVideoFiles/22886883-星瞳_Official/record_fans_num.json'
 
 if __name__ == '__main__':
     count = 1
-    Data_Record = DataRecord(bili_url, file_path)
+    Data_Record = DataRecord(bili_uid, filepath=file_path)
     while 1:
         c_time = time.strftime('%H:%M:%S', time.localtime())
 
@@ -53,10 +66,5 @@ if __name__ == '__main__':
             if c_time[6:8] == '00':
                 count -= 1
         else:
-            with open(file_path, 'r') as f:
-                data_load = list(json.load(f))
-                data_load.append(Data_Record.fans_record_dict())
-
-            with open(file_path, 'w') as fin:
-                json.dump(data_load, fin, indent=4)
+            Data_Record.write_num()
             time.sleep(600)

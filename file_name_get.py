@@ -29,7 +29,10 @@ if statue_code == 0:
             else:
                 name.append([count, out])
 elif statue_code == 1:
-    name = [i for i in files_list]
+    if out_code == 1:
+        name = [[i+1, files_list[i]] for i in range(len(files_list))]
+    elif out_code == 0:
+        name = files_list[:]
 
 with open(out_path, 'w') as f:
     for i in name:

@@ -33,6 +33,3 @@ class Solution:
             return ret
         left_right(1, n)
         return left_right(1, n)
-
-if __name__ == '__main__':
-    Solution.generateTrees(n = 3)

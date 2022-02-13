@@ -2,7 +2,7 @@
 # https://dict.youdao.com/search?q=word&keyfrom=new-fanyi.smartResult
 
 import requests as r
-from bs4 import BeautifulSoup
+from bs4 import BeautifulSoup  # 用于处理get得到的html格式
 import re
 import docx
 import os.path
@@ -75,9 +75,9 @@ class DocxTrans:
 if __name__ == '__main__':
     file_trans = DocxTrans()
     files_list = file_trans.get_file_list(
-        'C:\\Users\\xzqng\\Documents\\WeChat Files\\huongxia\\FileStorage\\File\\2022-02',
+        r'C:\Users\xzqng\Documents\WeChat Files\huongxia\FileStorage\File\2022-02',
         keyword='沸腾')
-    output_path = 'C:\\Users\\xzqng\\Documents\\WeChat Files\\huongxia\\FileStorage\\File\\2022-02\\Topic'
+    output_path = r'C:\Users\xzqng\Documents\WeChat Files\huongxia\FileStorage\File\2022-02\Topic'
     count = 6
     for file_path in files_list:
         word_list = file_trans.read_docx(file_path)

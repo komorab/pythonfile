@@ -1,4 +1,5 @@
 # 2022-2-16 编写一个类用于封装关于文件名搜索的函数
+# 2022-2-17 实际测试的时候，会直接调用init里面的默认值，无法获取输入值，先简单修改一下
 
 import re
 import os
@@ -60,12 +61,16 @@ class FileNameGet:
 
 
 if __name__ == '__main__':
-    do_file = FileNameGet()
-    do_file.file_path = input('输入要读取的文件夹路径，如 D:\\PR\\Adobe，直接回车默认使用G:\n：')
-    do_file.file_name = input('输入要使用的文件名，直接回车默认name.txt\n：')
-    do_file.out_code = int(input('要添加序号输入1，不添加序号输入0，回车默认添加序号\n：'))
-    do_file.statue_code = int(input('读取所有文件名输入1， 读取歌曲名输入0\n：'))
-    do_file.key_word = input('输入筛选关键词，直接回车不进行关键词筛选\n：')
+    file_path = input('输入要读取的文件夹路径，如 D:\\PR\\Adobe，直接回车默认使用G:\n：')
+    file_name = input('输入要使用的文件名，直接回车默认name.txt\n：')
+    if not file_path:
+        file_path = 'G:'
+    if not file_name:
+        file_name = 'name.txt'  # ugly 2022年2月17日23点11分
+    out_code = int(input('要添加序号输入1，不添加序号输入0\n：'))
+    statue_code = int(input('读取所有文件名输入1， 读取歌曲名输入0\n：'))
+    key_word = input('输入筛选关键词，直接回车不进行关键词筛选\n：')
+    do_file = FileNameGet(file_path, file_name, out_code, statue_code, key_word)
     ret_list = do_file.get_file()
     if do_file.statue_code == 0:
         ret_list = do_file.split_bracket(ret_list)

@@ -12,11 +12,11 @@ class FileNameGet:
     """
 
     def __init__(self,
-                 file_path='G:',
-                 file_name='name.txt',
-                 out_code=1,
-                 statue_code=0,
-                 key_word=''):
+                 file_path: str,
+                 file_name: str,
+                 out_code: int,
+                 statue_code: int,
+                 key_word: str):
         self.file_path = file_path
         self.file_name = file_name
         self.out_code = out_code

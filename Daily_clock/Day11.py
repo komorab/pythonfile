@@ -1,6 +1,6 @@
 # 2022-2-19 969 煎饼排序
-# 给定数组arr以及整数k，将arr的前k项翻转 0 - k-1转k-1 - 0并返回arr（k可以为None，或者不止一个
-# 不太明白，不是应该有个k吗，没有k的输入怎么翻转前k项？
+# 给定数组arr，对于整数k，将arr的前k项翻转 0 - k-1转k-1 - 0并返回一个数组（k可以为None
+# 懂了，经过n次翻转来使数组有序，返回由每次翻转值k组成的数组
 
 
 class Solution(object):
@@ -19,7 +19,7 @@ class Solution(object):
                 continue
             m = index
             for i in range((m + 1) // 2):
-                arr[i], arr[m - i] = arr[m - i], arr[i]  # 原地反转
+                arr[i], arr[m - i] = arr[m - i], arr[i]  # 原地反转，但是我写的这个就有问题？？？
             for i in range(n // 2):
                 arr[i], arr[n - 1 - i] = arr[n - 1 - i], arr[i]  # 原地反转
             ans.append(index + 1)

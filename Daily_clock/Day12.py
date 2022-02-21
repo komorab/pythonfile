@@ -6,7 +6,7 @@
 class Solution(object):
     def isOneBitCharacter(self, bits):
         """
-        :type bits: List[int]
+        :type: bits: List[int]
         :rtype: bool
         """
         i, n = 0, len(bits)

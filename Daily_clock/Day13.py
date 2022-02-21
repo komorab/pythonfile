@@ -17,7 +17,7 @@ from collections import deque
 class Solution(object):
     def pushDominoes(self, dominoes):
         """
-        :type dominoes: str
+        :type: dominoes: str
         :rtype: str
         """
         n = len(dominoes)

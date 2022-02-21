@@ -29,6 +29,7 @@ class FileNameGet:
         return os.listdir(self.file_path)
 
 # 这里应该先有一个函数用于处理或者筛选文件名（写俩函数吧
+# 太简陋了，并且应该既能处理书名号也能输出没有书名号的文件名，书名号可以移到后面的关键词
     def split_bracket(self, files_list: list) -> list:
         """处理文件名里面的书名号"""
         out_list = []

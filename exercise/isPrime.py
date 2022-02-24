@@ -1,4 +1,6 @@
 # 2022-2-22 用于判断一个数是否是质数
+import random
+
 
 def is_prime(num: int) -> bool:
     """判断给定的数是否是质数"""
@@ -14,7 +16,7 @@ def is_prime(num: int) -> bool:
         return False
 
 
-def list_prime(num_list: list[int]):
+def list_prime(num_list: list):
     """
     判断给定的数组中的每一项是否为质数
     并返回由布尔值组成的数组
@@ -30,4 +32,6 @@ def list_prime(num_list: list[int]):
 
 
 if __name__ == '__main__':
-    print(is_prime(13))
+    num = [random.randint(2, 100000) for _ in range(20)]
+    num = [i for i in num if is_prime(i)]
+    print(num)

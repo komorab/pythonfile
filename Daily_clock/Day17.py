@@ -20,4 +20,4 @@ class Solution(object):
         num2 = num2.split('+')
         real = int(num1[0]) * int(num2[0]) - int(num1[1][:-1]) * int(num2[1][:-1])
         image = int(num1[0]) * int(num2[1][:-1]) + int(num1[1][:-1]) * int(num2[0])
-        return str(real) + '+' + str(image) + 'i'
+        return f'{real}+{image}i'

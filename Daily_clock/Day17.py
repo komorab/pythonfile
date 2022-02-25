@@ -1,5 +1,6 @@
 # 2022-2-25 537 复数乘法
 # 虽然中难度但是？
+# 还有好像前几天都是选的python不是python3，尴尬
 """
 复数 可以用字符串表示，遵循 "实部+虚部i" 的形式，并满足下述条件：
     实部 是一个整数，取值范围是 [-100, 100]
@@ -9,13 +10,8 @@
 """
 
 
-class Solution(object):
-    def complexNumberMultiply(self, num1, num2):
-        """
-        :type num1: str
-        :type num2: str
-        :rtype: str
-        """
+class Solution:
+    def complexNumberMultiply(self, num1: str, num2: str) -> str:
         num1 = num1.split('+')
         num2 = num2.split('+')
         real = int(num1[0]) * int(num2[0]) - int(num1[1][:-1]) * int(num2[1][:-1])

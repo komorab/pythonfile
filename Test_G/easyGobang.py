@@ -31,7 +31,7 @@ class MAP_ENTRY_TYPE(IntEnum):
     MAP_NONE = 3,  # out of map range
 
 
-class Map():
+class Map:
     def __init__(self, width, height):
         self.width = width
         self.height = height
@@ -140,7 +140,7 @@ main section
 '''
 
 
-class Button():
+class Button:
     def __init__(self, screen, text, x, y, color, enable):
         self.screen = screen
         self.width = BUTTON_WIDTH
@@ -210,7 +210,7 @@ class GiveupButton(Button):
             self.enable = True
 
 
-class Game():
+class Game:
     def __init__(self, caption):
         pygame.init()
         self.screen = pygame.display.set_mode([SCREEN_WIDTH, SCREEN_HEIGHT])

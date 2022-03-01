@@ -15,7 +15,7 @@ string convert(string s, int numRows);
 class Solution:
     def convert(self, s: str, numRows: int) -> str:
         n = len(s)
-        ans = []
+        ans = ''
         if n <= numRows or numRows == 1:
             return s
         else:
@@ -23,10 +23,10 @@ class Solution:
                 if i == 0 or i == numRows-1:
                     position = [_ for _ in range(i, n, 2*numRows-2)]
                     for pos in position:
-                        ans.append(s[pos])
+                        ans += s[pos]
                 else:
                     position = [_ for _ in range(i, n, 2*numRows-2)] + [j for j in range(2*numRows-2-i, n, 2*numRows-2)]
                     position.sort()
                     for pos in position:
-                        ans.append(s[pos])
-            return ''.join(ans)
+                        ans += s[pos]
+            return ans

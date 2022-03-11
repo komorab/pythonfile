@@ -20,6 +20,7 @@ class Node:
         self.val = val
         self.children = children
 
+
 class Solution:
     @staticmethod
     def countHighestScoreNodes(self, parents: list[int]) -> int:

@@ -1,10 +1,11 @@
 import pygame
 from pygame.sprite import Sprite
 
+
 class Bullet(Sprite):
 
     def __init__(self, ai_settings, screen, ship):
-        'creat a bullet at place ship in'
+        """creat a bullet at place ship in"""
         super().__init__()
         self.screen = screen
 
@@ -14,7 +15,7 @@ class Bullet(Sprite):
         self.rect.centerx = ship.rect.centerx
         self.rect.top = ship.rect.top
 
-        self.y = float(self.rect.y)#bullet number
+        self.y = float(self.rect.y)  # bullet number
 
         self.color = ai_settings.bullet_color
         self.speed_factor = ai_settings.bullet_speed_factor

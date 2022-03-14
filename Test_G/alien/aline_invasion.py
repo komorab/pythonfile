@@ -1,4 +1,4 @@
-#to creat the game about shoot aline
+# to creat the game about shoot aline
 import pygame
 import sys
 from setting import Settings
@@ -7,8 +7,9 @@ import game_functions as gf
 from pygame.sprite import Group
 from alien import Alien
 
+
 def run_game():
-    'beginning(initialize) and creat a screen object'
+    """beginning(initialize) and creat a screen object"""
     pygame.init()
 
     ai_settings = Settings()
@@ -24,7 +25,7 @@ def run_game():
 
     bullets = Group()
 
-#start the main loop of game
+# start the main loop of game
     while True:
         gf.check_events(ai_settings, screen, ship, bullets)
         ship.update()
@@ -33,5 +34,5 @@ def run_game():
         gf.upadte_screen(ai_settings, screen, ship,alien, bullets)
 
 
-if __name__=='__main__':
+if __name__ == '__main__':
     run_game()

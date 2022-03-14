@@ -1,19 +1,20 @@
-#ship to shoot alien
+# ship to shoot alien
 import pygame
 
-class Ship():
+
+class Ship:
 
     def __init__(self, ai_settings, screen):
         'initialize the ship and set beginning position'
         self.screen = screen
         self.ai_settings = ai_settings
 
-        #load ship and get rectangle
+        # load ship and get rectangle
         self.image = pygame.image.load('images/ship.bmp')
         self.rect = self.image.get_rect()
         self.screen_rect = screen.get_rect()
 
-        #put new ship to bottom middle
+        # put new ship to bottom middle
         self.rect.centerx = self.screen_rect.centerx
         self.rect.bottom = self.screen_rect.bottom
 

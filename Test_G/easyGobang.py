@@ -308,16 +308,17 @@ class Game:
                 break
 
 
-game = Game("FIVE CHESS " + GAME_VERSION)
-while True:
-    game.play()
-    pygame.display.update()
+if __name__ == '__main__':
+    game = Game("FIVE CHESS " + GAME_VERSION)
+    while True:
+        game.play()
+        pygame.display.update()
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            pygame.quit()
-            exit()
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            mouse_x, mouse_y = pygame.mouse.get_pos()
-            game.mouseClick(mouse_x, mouse_y)
-            game.check_buttons(mouse_x, mouse_y)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                pygame.quit()
+                exit()
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                mouse_x, mouse_y = pygame.mouse.get_pos()
+                game.mouseClick(mouse_x, mouse_y)
+                game.check_buttons(mouse_x, mouse_y)

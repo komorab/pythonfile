@@ -1,4 +1,4 @@
-#2022-1-23 to creat a ai play weiqi or wuziqi
+# 2022-1-23 to creat an AI play Go or GoBang
 
 import pygame
 from pygame.locals import *
@@ -42,7 +42,9 @@ class Map:
         for y in range(self.height):
             for x in range(self.width):
                 self.map[y][x] = 0
+        # self.map = [[0 for x in range(self.width)] for y in range(self.height)]
         self.steps = []
+        # self.steps.clear()
 
     def reverseTurn(self, turn):
         if turn == MAP_ENTRY_TYPE.MAP_PLAYER_ONE:

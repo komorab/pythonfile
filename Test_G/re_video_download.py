@@ -10,6 +10,7 @@ class DataRecord:
     def __init__(self, uid: int, filepath=sys.path[0], filename='FollowerRecord.json'):
         self.uid = uid
         self.url = f'https://api.bilibili.com/x/relation/stat?vmid={uid}'
+        self.filename = filename
         if filepath == sys.path[0]:
             self.filepath = filepath + filename
         else:

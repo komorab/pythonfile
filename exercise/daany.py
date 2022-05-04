@@ -43,7 +43,7 @@ def bs_call_value(target_price, strike_price, rf_rate, maturity, volatility):
     return target_price * norm.cdf(d1, 0, 1) - strike_price * pow(e, -rf_rate * maturity) * norm.cdf(d2, 0, 1)
 
 
-with open('G:\PycharmProject\pythonfile\exercise\data.txt', 'r') as f:
+with open(r'G:\PycharmProject\pythonfile\exercise\data.txt', 'r') as f:
     data = f.read()
 data = data.replace('\n', ',')
 n_data = data.split(',')
@@ -68,7 +68,7 @@ for n in range(113, -1, -1):
     count += 1
 
 
-with open('G:\PycharmProject\pythonfile\exercise\end_price','r') as f:
+with open(r'G:\PycharmProject\pythonfile\exercise\end_price', 'r') as f:
     call_value = f.read()
 call_value = call_value.replace('\n', ',')
 call_value = call_value.split(',')
@@ -89,13 +89,13 @@ for n in range(113):
         end = [bs_call_value(k, strike_price, rf_rate, j, rang[0]), bs_call_value(k, strike_price, rf_rate, j, rang[1]),
                bs_call_value(k, strike_price, rf_rate, j, mid)]
 
-        if abs(end[0] - i) <= 0.00000000001:
+        if abs(end[0] - i) <= 0.00001:
             implied.append(rang[0])
             break
-        elif abs(end[1] - i) <= 0.00000000001:
+        elif abs(end[1] - i) <= 0.00001:
             implied.append(rang[1])
             break
-        elif abs(end[-1] - i) <= 0.00000000001:
+        elif abs(end[-1] - i) <= 0.00001:
             implied.append(mid)
             break
 

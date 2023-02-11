@@ -5,9 +5,6 @@ from math import *
 from scipy.stats import *
 
 
-day = 114
-
-
 def c_wave(x, y) -> float:
     return (y - x)/x
 

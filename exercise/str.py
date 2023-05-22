@@ -84,8 +84,8 @@ def get_rank(name, score, light=1):
 print(get_rank('alice', 88))
 '''
 
-class Subject():
-    'to simulate subject in school'
+class Subject:
+    """to simulate subject in school"""
     def __init__(self, score_c:int, score_m:int, score_e:int):
         self.score_c = score_c
         self.score_m = score_m
